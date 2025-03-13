@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.SuperChain.mapper.ReactMapper">
+    <select id="getHomePage" resultType="map">
+        select carousel_card      as carouselCard,
+               realtime_data_card as realtimeDataCard,
+               eight_data_card    as eightDataCard,
+               four_data_card     as fourDataCard,
+               timeline_data_card as timelineDataCard
+        from home_page
+    </select>
+
+    <select id="getUserByEmail" resultType="com.example.SuperChain.bean.User">
+        select *
+        from users
+        where email = #{email}
+    </select>
+
+    <select id="saveUserCredentials" >
+        insert into users(email, public_key, name,date)
+        values (#{email}, #{formatPublicKey},#{formatPublicKey},now())
+    </select>
+</mapper>

@@ -1,0 +1,34 @@
+#spring:
+#  datasource:
+#    name: test
+#    url: jdbc:mysql://121.41.176.129:3306/test
+#    username: root
+#    password: 3473901836
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+spring:
+  # 数据源配置
+#  datasource:
+#    name: test  # 数据源名称
+#    url: jdbc:mysql://localhost:3306/test  # 数据库连接URL
+#    username: root  # 数据库用户名
+#    password: 3473901836  # 数据库密码
+#    driver-class-name: com.mysql.cj.jdbc.Driver  # JDBC驱动类名
+
+  # Devtools配置 - 用于自动重启应用
+  devtools:
+    restart:
+      enabled: true  # 启用自动重启功能
+      additional-paths: src/main  # 指定额外的文件路径用于触发重启
+server:
+  # 设置服务器配置
+  compression:
+    enabled: true # 是否启用压缩功能
+    min-response-size: 1024 # 最小响应大小，小于该大小则不启用压缩
+    # 支持压缩的MIME类型
+    mime-types: text/html,text/xml,text/plain,text/css,application/javascript,application/json
+
+# 配置MyBatis的Mapper文件位置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  # 配置类型别名所在的包名
+  type-aliases-package: com.example.musicplayer.bean
